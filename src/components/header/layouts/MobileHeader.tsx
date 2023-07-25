@@ -19,22 +19,6 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ toggleSider, isSider
         <ProfileDropdown />
       </BaseCol>
 
-      <BaseCol>
-        <BaseRow align="middle">
-          <BaseCol>
-            <NotificationsDropdown />
-          </BaseCol>
-
-          <BaseCol>
-            <HeaderSearch />
-          </BaseCol>
-
-          <BaseCol>
-            <SettingsDropdown />
-          </BaseCol>
-        </BaseRow>
-      </BaseCol>
-
       <S.BurgerCol>
         <S.MobileBurger onClick={toggleSider} isCross={isSiderOpened} />
       </S.BurgerCol>

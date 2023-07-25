@@ -113,6 +113,7 @@
     "unchecked": "Unchecked"
   },
   "common": {
+    "participants": "Participants",
     "address": "Address",
     "advancedForms": "Advanced Forms",
     "age": "Age",
@@ -141,7 +142,7 @@
     "copied": "Copied to clipboard",
     "copy": "Copy",
     "country": "Country",
-    "nft-dashboard": "NFT Dashboard",
+    "dashboard": "Exercises",
     "medical-dashboard": "Medical Dashboard",
     "dataDisplay": "Data display",
     "dataTables": "Data Tables",
@@ -822,7 +823,8 @@
     "editableTable": "Editable Table",
     "invite": "Invite",
     "inviteMessage": "{{name}} invited successfully",
-    "treeTable": "Tree Table"
+    "treeTable": "Tree Table",
+    "viewHeartrate": "Heartrate"
   },
   "tabs": {
     "basic": "Basic tabs",

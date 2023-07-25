@@ -32,7 +32,7 @@ const MainLayout: React.FC = () => {
           <div>
             <Outlet />
           </div>
-          {!isTwoColumnsLayout && <References />}
+          <References />
         </MainContent>
       </S.LayoutMain>
     </S.LayoutMaster>

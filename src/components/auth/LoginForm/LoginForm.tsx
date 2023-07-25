@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { doLogin } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
-import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
-import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 
 interface LoginFormData {
-  email: string;
+  username: string;
   password: string;
 }
 
 export const initValues: LoginFormData = {
-  email: 'hello@altence.com',
-  password: 'some-test-pass',
+  username: '',
+  password: '',
 };
 
 export const LoginForm: React.FC = () => {
@@ -33,7 +31,7 @@ export const LoginForm: React.FC = () => {
       .unwrap()
       .then(() => navigate('/'))
       .catch((err) => {
-        notificationController.error({ message: err.message });
+        notificationController.error({ message: err.response.message });
         setLoading(false);
       });
   };
@@ -44,17 +42,17 @@ export const LoginForm: React.FC = () => {
         <Auth.FormTitle>{t('common.login')}</Auth.FormTitle>
         <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription>
         <Auth.FormItem
-          name="email"
-          label={t('common.email')}
+          name="username"
+          label="Username"
           rules={[
             { required: true, message: t('common.requiredField') },
             {
-              type: 'email',
-              message: t('common.notValidEmail'),
+              type: 'string',
+              message: 'Please enter a valid username',
             },
           ]}
         >
-          <Auth.FormInput placeholder={t('common.email')} />
+          <Auth.FormInput placeholder={'Username'} />
         </Auth.FormItem>
         <Auth.FormItem
           label={t('common.password')}
@@ -63,13 +61,6 @@ export const LoginForm: React.FC = () => {
         >
           <Auth.FormInputPassword placeholder={t('common.password')} />
         </Auth.FormItem>
-        <Auth.ActionsWrapper>
-          <BaseForm.Item name="rememberMe" valuePropName="checked" noStyle>
-            <Auth.FormCheckbox>
-              <S.RememberMeText>{t('login.rememberMe')}</S.RememberMeText>
-            </Auth.FormCheckbox>
-          </BaseForm.Item>
-        </Auth.ActionsWrapper>
         <BaseForm.Item noStyle>
           <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
             {t('common.login')}
